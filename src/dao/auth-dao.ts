@@ -18,7 +18,7 @@ export const registerDao = async (user: UserRegistration, req: Request) => {
 export const findUser = async (req: Request, res: Response) => {
   const db = req.app.locals.db;
   const result = await db.collection(collectionName).findOne({
-    $or: [{ email: req.body.email }, { mobile: req.body.mobile }],
+    $or: [{ email: req.body.email }, { mobile: req.body.email }],
   });
   return result;
 };
