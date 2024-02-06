@@ -3,6 +3,7 @@ import authRouter from "./routes/auth";
 import protectedRouter from "./routes/protected";
 import { connectToDatabase } from "./config/db-config";
 import * as dotenv from "dotenv";
+import userRoutes from "./routes/user-routes";
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use("/auth", authRouter);
 app.use("/protected", protectedRouter);
+app.use("/users", userRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
