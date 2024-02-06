@@ -6,7 +6,6 @@ const mongoURI =
 
 export async function connectToDatabase(): Promise<Db> {
   const client = await MongoClient.connect(mongoURI, {});
-  console.log(client);
   client.connect();
   const db = client.db("user-management");
   console.log("Connected to MongoDB");
