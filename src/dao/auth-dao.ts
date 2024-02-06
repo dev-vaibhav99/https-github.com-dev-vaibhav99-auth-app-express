@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { UserRegistration } from "../models/UserInterface";
-
-const collectionName: string = "users";
-
+import { userEnums } from "../utils/app-constants";
 export const registerDao = async (user: UserRegistration, req: Request) => {
   try {
     const db = req.app.locals.db;
-    const result = await db.collection(collectionName).insertOne(user);
+    const result = await db
+      .collection(userEnums.COLLECTION_NAME)
+      .insertOne(user);
     console.log(result);
     return result.insertedId;
   } catch (error) {
@@ -17,7 +17,7 @@ export const registerDao = async (user: UserRegistration, req: Request) => {
 
 export const findUser = async (req: Request, res: Response) => {
   const db = req.app.locals.db;
-  const result = await db.collection(collectionName).findOne({
+  const result = await db.collection(userEnums.COLLECTION_NAME).findOne({
     $or: [{ email: req.body.email }, { mobile: req.body.email }],
   });
   return result;
