@@ -4,6 +4,7 @@ import protectedRouter from "./routes/protected";
 import { connectToDatabase } from "./config/db-config";
 import * as dotenv from "dotenv";
 import userRoutes from "./routes/user-routes";
+import cors from "cors";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ const PORT = process.env.PORT || 3000;
 
 // Routes
 app.use(express.json());
+app.use(cors());
 app.use("/auth", authRouter);
 app.use("/protected", protectedRouter);
 app.use("/users", userRoutes);
