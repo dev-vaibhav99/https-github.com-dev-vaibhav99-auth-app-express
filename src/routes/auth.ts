@@ -14,6 +14,6 @@ const router = Router();
 
 router.post("/register", registrationValidation, registrationController);
 
-router.post("/login", loginValidation, inputType, loginController);
+router.post("/login", loginValidation, loginController);
 
 export default router;
