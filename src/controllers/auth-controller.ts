@@ -28,9 +28,7 @@ export const loginController = async (req: Request, res: Response) => {
   // Check if the password is correct
   if (await bcrypt.compare(req.body.password, user.password)) {
     const accessToken = sign(user, "JWT_SECRET");
-    localStorage.setItem("access_token", accessToken);
-    localStorage.setItem("user", user);
-    res.json({ accessToken });
+    res.json({ accessToken, user });
   } else {
     res.status(401).send("Incorrect password");
   }
