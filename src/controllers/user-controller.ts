@@ -7,3 +7,10 @@ export const getAllUsers = async (req: Request, res: Response) => {
     ? res.status(401).json({ message: "Users not found" })
     : res.status(200).json(users);
 };
+
+export const getUser = async (req: Request, res: Response) => {
+  const users = await userDao.getUser(req, res);
+  users == null || users == undefined
+    ? res.status(401).json({ message: "User not found" })
+    : res.status(200).json(users);
+};
