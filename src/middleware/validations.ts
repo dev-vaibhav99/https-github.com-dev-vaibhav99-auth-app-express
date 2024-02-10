@@ -10,7 +10,7 @@ export const registrationValidation = (
     registrationSchema.parse(req.body);
     next();
   } catch (error) {
-    res.status(400).json({ message: "Data Invalid" });
+    res.status(400).json("Invalid data");
   }
 };
 
@@ -23,6 +23,6 @@ export const loginValidation = (
     loginSchema.parse(req.body);
     next();
   } catch (error) {
-    res.status(400).json({ message: "Data Invalid" });
+    res.status(400).json("Data Invalid");
   }
 };
