@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response, response } from "express";
 import bcrypt from "bcryptjs";
 import { UserRegistration } from "../models/UserInterface";
 import { findUser, registerDao } from "../dao/auth-dao";
@@ -15,10 +15,11 @@ export const registrationController = async (req: Request, res: Response) => {
     mobile: req.body.mobile,
     gender: req.body.gender,
     userRole: req.body.userRole,
+    imageUrl: req.body.imageUrl,
   };
-  const insertedId = await registerDao(user, req);
-  insertedId &&
-    res.status(201).send(`User registered successfully with id: ${insertedId}`);
+  const insertedUser = await registerDao(user, req);
+  console.log(insertedUser);
+  insertedUser && res.status(201).json(insertedUser);
 };
 
 export const loginController = async (req: Request, res: Response) => {

@@ -10,6 +10,7 @@ export const registrationSchema = z.object({
     .regex(/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/),
   password: z.string().min(8), // You can add additional password requirements here if needed
   userRole: z.enum(["admin", "user"]), // Adjust as necessary based on your user roles
+  imageUrl: z.string(),
 });
 
 export const loginSchema = z.object({

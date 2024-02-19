@@ -10,4 +10,5 @@ export interface UserRegistration extends UserLogin {
   gender: string;
   mobile: string;
   userRole: string;
+  imageUrl: string;
 }

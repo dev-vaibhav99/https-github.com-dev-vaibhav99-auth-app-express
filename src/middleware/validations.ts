@@ -7,6 +7,7 @@ export const registrationValidation = (
   next: NextFunction
 ) => {
   try {
+    console.log("body", req);
     registrationSchema.parse(req.body);
     next();
   } catch (error) {

@@ -6,4 +6,6 @@ const router = Router();
 
 router.get("/", authenticateToken, userController.getAllUsers);
 
+router.get("/s3Url", userController.generateS3UploadUrl);
+
 export default router;

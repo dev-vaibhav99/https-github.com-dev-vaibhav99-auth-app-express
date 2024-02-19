@@ -7,8 +7,21 @@ export const registerDao = async (user: UserRegistration, req: Request) => {
     const result = await db
       .collection(userEnums.COLLECTION_NAME)
       .insertOne(user);
-    console.log(result);
-    return result.insertedId;
+    return result.insertedId && user;
+  } catch (error) {
+    console.error("Error inserting data:", error);
+    throw error;
+  }
+};
+
+export const saveImageToS3 = async (req: Request, url: string) => {
+  try {
+    const formData = new FormData();
+    formData.append("image", req.body.profileImage);
+    const result = await fetch(url, {
+      method: "PUT",
+      body: formData,
+    });
   } catch (error) {
     console.error("Error inserting data:", error);
     throw error;
